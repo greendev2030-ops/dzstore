@@ -3,6 +3,8 @@ import TrustIndicators from "@/components/TrustIndicators";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
 
+export const dynamic = 'force-dynamic';
+
 async function getLatestProducts() {
   const products = await prisma.product.findMany({
     take: 8,

@@ -2,6 +2,8 @@ import prisma from "@/lib/prisma";
 import { redirect, notFound } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
+export const dynamic = 'force-dynamic';
+
 async function getProduct(id: string) {
     const product = await prisma.product.findUnique({
         where: { id },

@@ -2,6 +2,8 @@ import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { updateCustomerScore } from "@/lib/customerScore";
 
+export const dynamic = 'force-dynamic';
+
 async function getOrders() {
     const orders = await prisma.order.findMany({
         orderBy: { created_at: "desc" },

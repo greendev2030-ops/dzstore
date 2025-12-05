@@ -7,6 +7,8 @@ import AddToCartButton from "@/components/AddToCartButton";
 import { FadeIn, SlideUp, StaggerChildren, StaggerItem } from "@/components/ui/motion";
 import ProductReviews from "@/components/ProductReviews";
 
+export const dynamic = 'force-dynamic';
+
 async function getProduct(slug: string) {
     const product = await prisma.product.findUnique({
         where: { slug },
