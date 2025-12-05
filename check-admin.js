@@ -1,0 +1,15 @@
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+async function main() {
+    const admin = await prisma.admin.findUnique({
+        where: { username: 'admin' },
+    });
+    console.log('Admin user found:', admin);
+}
+
+main()
+    .catch(e => console.error(e))
+    .finally(async () => {
+        await prisma.$disconnect();
+    });

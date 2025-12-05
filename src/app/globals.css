@@ -1,0 +1,1340 @@
+@import "tailwindcss";
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+
+  /* Premium Gradients - Purple/Blue Theme */
+  --gradient-luxury: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-neon: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-cyber: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --gradient-gold: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #00f2fe 100%);
+
+  /* Neon Colors - Purple/Blue/Cyan */
+  --neon-cyan: #00fff9;
+  --neon-pink: #ff006e;
+  --neon-purple: #8b5cf6;
+  --neon-blue: #4facfe;
+
+  /* Primary Colors */
+  --primary: #667eea;
+  --primary-dark: #5568d3;
+  --accent: #00f2fe;
+}
+
+/* Light Mode Variables */
+html:not(.dark) {
+  --foreground-rgb: 15, 23, 42;
+  --background-start-rgb: 248, 250, 252;
+  --background-end-rgb: 241, 245, 249;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+/* Custom Utilities */
+.glass {
+  @apply bg-black/70 backdrop-blur-md border-b border-white/10;
+}
+
+html:not(.dark) .glass {
+  @apply bg-white/80 border-slate-200;
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-sm border border-white/10 hover:border-purple-500/50 transition-all duration-300;
+}
+
+html:not(.dark) .glass-card {
+  @apply bg-white/90 border-slate-200 shadow-lg;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-cyan-400;
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 shadow-lg shadow-purple-900/20 hover:shadow-purple-900/40;
+}
+
+/* Light Mode Global Overrides */
+html:not(.dark) {
+  /* Text colors */
+  color-scheme: light;
+}
+
+html:not(.dark) h1,
+html:not(.dark) h2,
+html:not(.dark) h3,
+html:not(.dark) h4,
+html:not(.dark) h5,
+html:not(.dark) h6 {
+  @apply text-slate-900;
+}
+
+html:not(.dark) p,
+html:not(.dark) span,
+html:not(.dark) div {
+  @apply text-slate-700;
+}
+
+html:not(.dark) .text-slate-300,
+html:not(.dark) .text-slate-400 {
+  @apply text-slate-600;
+}
+
+html:not(.dark) .text-slate-200 {
+  @apply text-slate-700;
+}
+
+html:not(.dark) .bg-black {
+  @apply bg-slate-50;
+}
+
+/* Gradient Animation for Text */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-gradient-animated {
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6, #06b6d4, #3b82f6, #8b5cf6);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 3s ease infinite;
+}
+
+/* Shimmer Animation for Skeletons */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer {
+  animation: shimmer 2s infinite;
+}
+
+/* Premium Gradient Backgrounds */
+.gradient-luxury {
+  background: var(--gradient-luxury);
+}
+
+.gradient-neon {
+  background: var(--gradient-neon);
+}
+
+.gradient-cyber {
+  background: var(--gradient-cyber);
+}
+
+.gradient-gold {
+  background: var(--gradient-gold);
+}
+
+.gradient-emerald {
+  background: var(--gradient-emerald);
+}
+
+/* Neon Glow Effects - Purple/Blue Theme */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.5),
+    0 0 40px rgba(102, 126, 234, 0.3),
+    0 0 60px rgba(102, 126, 234, 0.2);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 255, 249, 0.5),
+    0 0 40px rgba(0, 255, 249, 0.3),
+    0 0 60px rgba(0, 255, 249, 0.2);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5),
+    0 0 40px rgba(139, 92, 246, 0.3),
+    0 0 60px rgba(139, 92, 246, 0.2);
+}
+
+/* Holographic Border Effect */
+@keyframes holographic {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.border-holographic {
+  position: relative;
+  background: linear-gradient(90deg,
+      #ff006e,
+      #8b5cf6,
+      #00fff9,
+      #10b981,
+      #ff006e);
+  background-size: 300% 300%;
+  animation: holographic 3s ease infinite;
+  padding: 2px;
+  border-radius: 1rem;
+}
+
+.border-holographic-content {
+  background: #000;
+  border-radius: calc(1rem - 2px);
+}
+
+html:not(.dark) .border-holographic-content {
+  background: #ffffff;
+  border: none;
+}
+
+
+
+/* 3D Card Tilt Effect */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: perspective(1000px) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg)) scale(1.05);
+}
+
+/* Glassmorphism Effects */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card-strong {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(103, 58, 183, 0.15);
+}
+
+.glass-card-purple {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.05) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.1);
+}
+
+.glass {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Metallic Text Effect */
+.text-metallic-gold {
+  background: linear-gradient(135deg, #f7971e 0%, #ffd200 50%, #f7971e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 10px rgba(247, 151, 30, 0.3);
+}
+
+.text-metallic-silver {
+  background: linear-gradient(135deg, #c0c0c0 0%, #ffffff 50%, #c0c0c0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 10px rgba(192, 192, 192, 0.3);
+}
+
+/* Animated Gradient Text */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-gradient-animated {
+  background: linear-gradient(90deg,
+      #667eea,
+      #00fff9,
+      #8b5cf6,
+      #667eea);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse Glow - Purple Theme */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(102, 126, 234, 0.8),
+      0 0 60px rgba(102, 126, 234, 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Magnetic Button Effect - Purple/Cyan */
+.btn-magnetic {
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.btn-magnetic::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #667eea, #00fff9, #8b5cf6);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(10px);
+}
+
+.btn-magnetic:hover::before {
+  opacity: 1;
+}
+
+/* Particle Background */
+.particles-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ultra-smooth transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Robust Product Card Theming */
+.product-card-bg {
+  background-color: #ffffff;
+}
+
+html.dark .product-card-bg {
+  background: linear-gradient(to bottom, #000000, #020617);
+}
+
+.product-card-title {
+  color: #000000;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+html.dark .product-card-title {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: normal;
+}
+
+.product-card-desc {
+  color: #1e293b;
+  /* slate-800 */
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+html.dark .product-card-desc {
+  color: #94a3b8;
+  /* slate-400 */
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.product-card-category {
+  color: #047857;
+  /* emerald-700 */
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+html.dark .product-card-category {
+  color: #34d399;
+  /* emerald-400 */
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Light Mode Form and Input Overrides */
+html:not(.dark) input[type="text"],
+html:not(.dark) input[type="email"],
+html:not(.dark) input[type="number"],
+html:not(.dark) input[type="password"],
+html:not(.dark) textarea,
+html:not(.dark) select {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+  /* slate-300 */
+  color: #0f172a;
+  /* slate-900 */
+}
+
+html:not(.dark) input[type="text"]:focus,
+html:not(.dark) input[type="email"]:focus,
+html:not(.dark) input[type="number"]:focus,
+html:not(.dark) input[type="password"]:focus,
+html:not(.dark) textarea:focus,
+html:not(.dark) select:focus {
+  border-color: #8b5cf6;
+  /* purple-500 */
+  background-color: #ffffff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+html:not(.dark) input::placeholder,
+html:not(.dark) textarea::placeholder {
+  color: #94a3b8;
+  /* slate-400 */
+}
+
+/* ========== FINAL CONSOLIDATED LIGHT MODE OVERRIDES ========== */
+
+/* 1. Backgrounds & Layout */
+html:not(.dark) {
+  --foreground-rgb: 15, 23, 42;
+  --background-start-rgb: 248, 250, 252;
+  --background-end-rgb: 241, 245, 249;
+  color-scheme: light;
+}
+
+html:not(.dark) body {
+  background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+  color: #0f172a;
+}
+
+html:not(.dark) .bg-black,
+html:not(.dark) .bg-black\/30,
+html:not(.dark) .bg-black\/50,
+html:not(.dark) .bg-black\/80 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  /* slate-300 */
+}
+
+html:not(.dark) section {
+  background-color: transparent !important;
+}
+
+/* 2. Universal Text Color Inversion */
+/* Force all light text to be dark in light mode */
+html:not(.dark) .text-white,
+html:not(.dark) .text-slate-200,
+html:not(.dark) .text-slate-300,
+html:not(.dark) .text-slate-400,
+html:not(.dark) .text-gray-300,
+html:not(.dark) .text-gray-400 {
+  color: #0f172a !important;
+  /* slate-900 */
+}
+
+/* Make secondary text slightly lighter but still readable */
+html:not(.dark) p .text-slate-300,
+html:not(.dark) p .text-slate-400,
+html:not(.dark) span .text-slate-300,
+html:not(.dark) span .text-slate-400,
+html:not(.dark) label .text-slate-300 {
+  color: #475569 !important;
+  /* slate-600 */
+}
+
+/* 3. EXCEPTIONS: Keep text white in specific contexts */
+
+/* A. Absolute positioned overlays (e.g. text over images) */
+html:not(.dark) .absolute .text-white,
+html:not(.dark) .absolute.text-white {
+  color: #ffffff !important;
+}
+
+/* B. Gradient Backgrounds (Buttons, Badges, Logos) */
+html:not(.dark) [class*="bg-gradient"] .text-white,
+html:not(.dark) [class*="bg-gradient"].text-white,
+html:not(.dark) [class*="from-"] .text-white,
+html:not(.dark) [class*="from-"].text-white {
+  color: #ffffff !important;
+}
+
+/* C. Specific Components */
+/* Navbar Logo & Badges */
+html:not(.dark) nav [class*="bg-gradient"] .text-white,
+html:not(.dark) nav [class*="bg-gradient"].text-white {
+  color: #ffffff !important;
+}
+
+/* 4. Buttons & Interactive Elements */
+/* Gradient Buttons -> White Text */
+html:not(.dark) button[class*="bg-gradient"],
+html:not(.dark) a[class*="bg-gradient"],
+html:not(.dark) .btn-primary {
+  color: #ffffff !important;
+}
+
+html:not(.dark) button[class*="bg-gradient"] *,
+html:not(.dark) a[class*="bg-gradient"] *,
+html:not(.dark) .btn-primary * {
+  color: #ffffff !important;
+}
+
+/* Border/Ghost Buttons -> Dark Text (White on Hover) */
+html:not(.dark) button[class*="border-white"],
+html:not(.dark) a[class*="border-white"],
+html:not(.dark) button[class*="bg-white"],
+html:not(.dark) a[class*="bg-white"],
+html:not(.dark) button[class*="border-white"].text-white,
+html:not(.dark) a[class*="border-white"].text-white,
+html:not(.dark) button[class*="bg-white"].text-white,
+html:not(.dark) a[class*="bg-white"].text-white {
+  color: #0f172a !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: #cbd5e1 !important;
+}
+
+html:not(.dark) button[class*="border-white"]:hover,
+html:not(.dark) a[class*="border-white"]:hover,
+html:not(.dark) button[class*="bg-white"]:hover,
+html:not(.dark) a[class*="bg-white"]:hover {
+  background-color: #7c3aed !important;
+  /* purple-600 */
+  color: #ffffff !important;
+  border-color: #7c3aed !important;
+}
+
+html:not(.dark) button[class*="border-white"]:hover *,
+html:not(.dark) a[class*="border-white"]:hover *,
+html:not(.dark) button[class*="border-white"]:hover .text-white,
+html:not(.dark) a[class*="border-white"]:hover .text-white {
+  color: #ffffff !important;
+}
+
+/* 5. Form Elements */
+html:not(.dark) input,
+html:not(.dark) textarea,
+html:not(.dark) select {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html:not(.dark) input::placeholder,
+html:not(.dark) textarea::placeholder {
+  color: #94a3b8 !important;
+  /* slate-400 */
+}
+
+/* Fix for inputs with bg-white/xx classes */
+html:not(.dark) input[class*="bg-white/"],
+html:not(.dark) textarea[class*="bg-white/"] {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* 6. Cards & Containers */
+/* Generic fix for translucent white backgrounds (glass effect) in light mode */
+html:not(.dark) [class*="bg-white/"] {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Generic fix for translucent white borders */
+html:not(.dark) [class*="border-white/"] {
+  border-color: #cbd5e1 !important;
+}
+
+/* Glass Cards */
+html:not(.dark) .glass-card,
+html:not(.dark) .glass-card-strong,
+html:not(.dark) .glass-card-purple {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Cards */
+html:not(.dark) .product-card-bg {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Footer */
+html:not(.dark) footer {
+  background-color: #f8fafc !important;
+  border-top-color: #e2e8f0 !important;
+}
+
+html:not(.dark) footer .text-slate-400 {
+  color: #475569 !important;
+  /* slate-600 */
+}
+
+/* Navbar Links */
+html:not(.dark) nav a:not([class*="bg-gradient"]) {
+  color: #475569 !important;
+}
+
+html:not(.dark) nav a:not([class*="bg-gradient"]):hover {
+  color: #0f172a !important;
+}
+
+/* Headings */
+html:not(.dark) h1,
+html:not(.dark) h2,
+html:not(.dark) h3,
+html:not(.dark) h4,
+html:not(.dark) h5,
+html:not(.dark) h6 {
+  color: #0f172a !important;
+}
+
+/* Exception for headings in overlays/gradients */
+html:not(.dark) .absolute h1,
+html:not(.dark) .absolute h2,
+html:not(.dark) .absolute h3,
+html:not(.dark) [class*="bg-gradient"] h1,
+html:not(.dark) [class*="bg-gradient"] h2,
+html:not(.dark) [class*="bg-gradient"] h3 {
+  color: #ffffff !important;
+}
+
+/* Override ALL .text-slate-300 for better light mode readability */
+html:not(.dark) .text-slate-300:not(.glass-card .text-slate-300) {
+  color: #475569 !important;
+  /* slate-600 */
+}
+
+/* Glass card slate-300 text should be even darker */
+html:not(.dark) .glass-card .text-slate-300 {
+  color: #334155 !important;
+  /* slate-700 */
+}
+
+/* Force text-white to be dark inside glass cards, even if absolute */
+html:not(.dark) .glass-card .text-white,
+html:not(.dark) .glass-card.absolute .text-white {
+  color: #0f172a !important;
+  /* slate-900 */
+}
+
+html:not(.dark) .glass-card .text-purple-400 {
+  color: #7c3aed !important;
+  /* purple-600 */
+}
+
+html:not(.dark) .glass-card .text-slate-400 {
+  color: #475569 !important;
+  /* slate-600 */
+}
+
+/* Footer and nav already have specific rules above, but reinforce */
+html:not(.dark) footer .text-white {
+  color: #0f172a !important;
+}
+
+html:not(.dark) footer h3,
+html:not(.dark) footer span {
+  color: #0f172a !important;
+}
+
+/* ========== ADMIN DASHBOARD LIGHT MODE OVERRIDES ========== */
+
+/* Main Layout & Background */
+html:not(.dark) #admin-layout {
+  background-color: #f8fafc !important;
+  /* slate-50 */
+}
+
+/* Sidebar */
+html:not(.dark) #admin-layout>div:first-child {
+  background-color: #ffffff !important;
+  border-right-color: #e2e8f0 !important;
+  /* slate-200 */
+}
+
+html:not(.dark) #admin-layout>div:first-child>div:first-child {
+  border-bottom-color: #e2e8f0 !important;
+  /* slate-200 */
+}
+
+/* Sidebar Title */
+html:not(.dark) #admin-layout .text-purple-400 {
+  color: #7c3aed !important;
+  /* purple-600 */
+}
+
+html:not(.dark) #admin-layout nav a .text-white {
+  color: #0f172a !important;
+}
+
+/* Sidebar Navigation Links */
+html:not(.dark) #admin-layout nav a {
+  color: #475569 !important;
+  /* slate-600 - inactive state */
+}
+
+html:not(.dark) #admin-layout nav a:hover {
+  background-color: #f1f5f9 !important;
+  /* slate-100 */
+  color: #7c3aed !important;
+  /* purple-600 */
+}
+
+/* Active navigation link - keep gradient, ensure white text */
+html:not(.dark) #admin-layout nav a[class*="bg-gradient"] {
+  color: #ffffff !important;
+}
+
+/* Sign Out Button */
+html:not(.dark) #admin-layout button {
+  color: #475569 !important;
+  /* slate-600 */
+}
+
+html:not(.dark) #admin-layout button:hover {
+  background-color: #f1f5f9 !important;
+  /* slate-100 */
+  color: #7c3aed !important;
+  /* purple-600 */
+}
+
+html:not(.dark) #admin-layout .border-slate-800 {
+  border-color: #e2e8f0 !important;
+  /* slate-200 */
+}
+
+/* Dashboard Content Area */
+html:not(.dark) #admin-layout main {
+  background-color: transparent !important;
+}
+
+/* Dashboard Headings */
+html:not(.dark) #admin-layout h1,
+html:not(.dark) #admin-layout h2 {
+  color: #0f172a !important;
+  /* slate-900 */
+}
+
+html:not(.dark) #admin-layout .text-slate-400 {
+  color: #64748b !important;
+  /* slate-500 */
+}
+
+/* Stat Cards - Icon colors */
+html:not(.dark) #admin-layout .text-purple-400,
+html:not(.dark) #admin-layout .text-emerald-400,
+html:not(.dark) #admin-layout .text-blue-400,
+html:not(.dark) #admin-layout .text-cyan-400 {
+  color: #7c3aed !important;
+  /* Use consistent purple for icons in light mode */
+}
+
+html:not(.dark) #admin-layout .text-yellow-400 {
+  color: #ca8a04 !important;
+  /* yellow-600 */
+}
+
+html:not(.dark) #admin-layout .text-red-400 {
+  color: #dc2626 !important;
+  /* red-600 */
+}
+
+/* Glass Cards inside Admin */
+html:not(.dark) #admin-layout .glass-card {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Text inside glass cards */
+html:not(.dark) #admin-layout .glass-card .text-white {
+  color: #0f172a !important;
+  /* slate-900 */
+}
+
+html:not(.dark) #admin-layout .glass-card .text-slate-400 {
+  color: #64748b !important;
+  /* slate-500 */
+}
+
+/* Lists (Recent Orders, Top Products) */
+html:not(.dark) #admin-layout .bg-white\/5 {
+  background-color: #f8fafc !important;
+  /* slate-50 */
+  border-color: #e2e8f0 !important;
+  /* slate-200 */
+}
+
+html:not(.dark) #admin-layout .border-white\/10 {
+  border-color: #e2e8f0 !important;
+  /* slate-200 */
+}
+
+/* Progress bars background */
+html:not(.dark) #admin-layout .bg-white\/10 {
+  background-color: #e2e8f0 !important;
+  /* slate-200 */
+}
+
+/* Quick Action Cards */
+html:not(.dark) #admin-layout a[class*="from-purple"],
+html:not(.dark) #admin-layout a[class*="from-blue"],
+html:not(.dark) #admin-layout a[class*="from-cyan"],
+html:not(.dark) #admin-layout a[class*="from-pink"] {
+  background: linear-gradient(to bottom right, rgba(124, 58, 237, 0.1), rgba(124, 58, 237, 0.05)) !important;
+  border-color: rgba(124, 58, 237, 0.2) !important;
+}
+
+html:not(.dark) #admin-layout a[class*="from-purple"]:hover,
+html:not(.dark) #admin-layout a[class*="from-blue"]:hover,
+html:not(.dark) #admin-layout a[class*="from-cyan"]:hover,
+html:not(.dark) #admin-layout a[class*="from-pink"]:hover {
+  background: linear-gradient(to bottom right, rgba(124, 58, 237, 0.15), rgba(124, 58, 237, 0.08)) !important;
+  border-color: rgba(124, 58, 237, 0.4) !important;
+}
+
+html:not(.dark) #admin-layout a .text-white {
+  color: #0f172a !important;
+}
+
+/* Low Stock Alert */
+html:not(.dark) #admin-layout .bg-red-500\/10 {
+  background-color: #fee2e2 !important;
+  /* red-100 */
+}
+
+html:not(.dark) #admin-layout .border-red-500\/20 {
+  border-color: #fecaca !important;
+  /* red-200 */
+}
+
+html:not(.dark) #admin-layout .bg-red-500\/20 {
+  background-color: #fecaca !important;
+  /* red-200 */
+}
+
+/* Admin Forms - Inputs & Textareas */
+html:not(.dark) #admin-layout input,
+html:not(.dark) #admin-layout textarea,
+html:not(.dark) #admin-layout select {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  /* slate-300 */
+  color: #0f172a !important;
+  /* slate-900 */
+}
+
+html:not(.dark) #admin-layout input:focus,
+html:not(.dark) #admin-layout textarea:focus,
+html:not(.dark) #admin-layout select:focus {
+  border-color: #7c3aed !important;
+  /* purple-600 */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1) !important;
+}
+
+/* Admin Forms - Labels */
+html:not(.dark) #admin-layout label {
+  color: #475569 !important;
+  /* slate-600 */
+}
+
+/* Override hardcoded dark input backgrounds */
+html:not(.dark) #admin-layout .bg-slate-800 {
+  background-color: #ffffff !important;
+}
+
+html:not(.dark) #admin-layout .border-slate-700 {
+  border-color: #cbd5e1 !important;
+  /* slate-300 */
+}
+
+/* Admin Buttons - Emerald/Green CTAs */
+html:not(.dark) #admin-layout .bg-emerald-600,
+html:not(.dark) #admin-layout .bg-emerald-700 {
+  background-color: #10b981 !important;
+  /* emerald-500 */
+}
+
+html:not(.dark) #admin-layout .bg-emerald-600:hover,
+html:not(.dark) #admin-layout .bg-emerald-700:hover {
+  background-color: #059669 !important;
+  /* emerald-600 */
+}
+
+/* Ensure button text remains white */
+html:not(.dark) #admin-layout button.bg-emerald-600,
+html:not(.dark) #admin-layout button.bg-emerald-700,
+html:not(.dark) #admin-layout a.bg-emerald-600,
+html:not(.dark) #admin-layout a.bg-emerald-700 {
+  color: #ffffff !important;
+}
+
+/* Admin Product Cards */
+html:not(.dark) #admin-layout .glass-card h3 {
+  color: #0f172a !important;
+  /* slate-900 */
+}
+
+/* Checkbox/Toggle styles */
+html:not(.dark) #admin-layout input[type="checkbox"] {
+  border-color: #cbd5e1 !important;
+}
+
+/* Status badges refinement */
+html:not(.dark) #admin-layout .bg-yellow-500\/20 {
+  background-color: #fef3c7 !important;
+  /* yellow-100 */
+}
+
+html:not(.dark) #admin-layout .bg-green-500\/20 {
+  background-color: #d1fae5 !important;
+  /* green-100 */
+}
+
+html:not(.dark) #admin-layout .bg-blue-500\/20 {
+  background-color: #dbeafe !important;
+  /* blue-100 */
+}
+
+html:not(.dark) #admin-layout .bg-purple-500\/20 {
+  background-color: #ede9fe !important;
+  /* purple-100 */
+}
+
+/* Text color for status badges */
+html:not(.dark) #admin-layout .text-yellow-400,
+html:not(.dark) #admin-layout .text-green-400,
+html:not(.dark) #admin-layout .text-blue-400,
+html:not(.dark) #admin-layout .text-purple-400 {
+  filter: brightness(0.7);
+  /* Darken for better contrast */
+}
+
+/* Table hover states - removed problematic escaped selector */
+
+/* Improve contrast for secondary text */
+html:not(.dark) #admin-layout .text-slate-500 {
+  color: #64748b !important;
+  /* keep slate-500 */
+}
+
+/* Orders & Products Page - List Containers */
+html:not(.dark) #admin-layout .bg-slate-900 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+html:not(.dark) #admin-layout .divide-slate-800>*+* {
+  border-top-color: #e2e8f0 !important;
+  /* slate-200 */
+}
+
+/* Additional border overrides */
+html:not(.dark) #admin-layout .border-slate-800 {
+  border-color: #e2e8f0 !important;
+  /* slate-200 */
+}
+
+html:not(.dark) #admin-layout .border-slate-700 {
+  border-color: #cbd5e1 !important;
+  /* slate-300 */
+}
+
+/* Text color overrides for lists */
+html:not(.dark) #admin-layout .text-slate-300 {
+  color: #475569 !important;
+  /* slate-600 */
+}
+
+/* Status badge backgrounds - refined colors */
+html:not(.dark) #admin-layout .bg-yellow-900 {
+  background-color: #fef3c7 !important;
+  /* yellow-100 */
+}
+
+html:not(.dark) #admin-layout .text-yellow-200 {
+  color: #ca8a04 !important;
+  /* yellow-600 */
+}
+
+html:not(.dark) #admin-layout .bg-emerald-900 {
+  background-color: #d1fae5 !important;
+  /* emerald-100 */
+}
+
+html:not(.dark) #admin-layout .text-emerald-200 {
+  color: #059669 !important;
+  /* emerald-600 */
+}
+
+html:not(.dark) #admin-layout .bg-red-900 {
+  background-color: #fee2e2 !important;
+  /* red-100 */
+}
+
+html:not(.dark) #admin-layout .text-red-200 {
+  color: #dc2626 !important;
+  /* red-600 */
+}
+
+html:not(.dark) #admin-layout .bg-blue-900 {
+  background-color: #dbeafe !important;
+  /* blue-100 */
+}
+
+html:not(.dark) #admin-layout .text-blue-200 {
+  color: #2563eb !important;
+  /* blue-600 */
+}
+
+/* Update button text colors */
+html:not(.dark) #admin-layout .text-emerald-400:hover {
+  color: #059669 !important;
+  /* emerald-600 */
+}
+
+html:not(.dark) #admin-layout .text-emerald-300 {
+  color: #10b981 !important;
+  /* emerald-500 */
+}
+
+html:not(.dark) #admin-layout .text-red-400:hover {
+  color: #dc2626 !important;
+  /* red-600 */
+}
+
+html:not(.dark) #admin-layout .text-red-300 {
+  color: #ef4444 !important;
+  /* red-500 */
+}
+
+/* Text inside spans for better visibility */
+html:not(.dark) #admin-layout .text-slate-400 span.text-white {
+  color: #0f172a !important;
+  /* slate-900 */
+}
+
+html:not(.dark) #admin-layout .text-slate-600 {
+  color: #475569 !important;
+  /* slate-600 - keep as is */
+}
+
+/* ========== ADMIN DASHBOARD VISUAL ENHANCEMENTS ========== */
+
+/* Sidebar - Add subtle shadow and enhanced styling */
+html:not(.dark) #admin-layout>div:first-child {
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Active navigation link - enhanced indicator */
+html:not(.dark) #admin-layout nav a[class*="bg-gradient"] {
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.2) !important;
+}
+
+/* Navigation links - smooth transitions */
+html:not(.dark) #admin-layout nav a {
+  transition: all 0.2s ease !important;
+}
+
+html:not(.dark) #admin-layout nav a:hover {
+  transform: translateX(4px);
+  box-shadow: 0 2px 4px rgba(124, 58, 237, 0.1) !important;
+}
+
+/* Glass Cards - Enhanced depth */
+html:not(.dark) #admin-layout .glass-card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06) !important;
+  transition: box-shadow 0.2s ease, transform 0.2s ease !important;
+}
+
+html:not(.dark) #admin-layout .glass-card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06) !important;
+  transform: translateY(-1px);
+}
+
+/* Stat Cards - Improved gradient backgrounds */
+html:not(.dark) #admin-layout .glass-card .bg-gradient-to-br {
+  background: linear-gradient(to bottom right, rgba(124, 58, 237, 0.08), transparent) !important;
+}
+
+/* Icon containers in stat cards */
+html:not(.dark) #admin-layout .glass-card .bg-purple-500\/20,
+html:not(.dark) #admin-layout .glass-card .bg-emerald-500\/20,
+html:not(.dark) #admin-layout .glass-card .bg-blue-500\/20,
+html:not(.dark) #admin-layout .glass-card .bg-cyan-500\/20 {
+  background-color: rgba(124, 58, 237, 0.12) !important;
+}
+
+/* Forms - Enhanced focus states */
+html:not(.dark) #admin-layout input:focus,
+html:not(.dark) #admin-layout textarea:focus,
+html:not(.dark) #admin-layout select:focus {
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+  transform: translateY(-1px);
+  transition: all 0.2s ease !important;
+}
+
+/* List items - Hover highlighting */
+html:not(.dark) #admin-layout .bg-slate-900 li {
+  transition: all 0.2s ease !important;
+}
+
+html:not(.dark) #admin-layout .bg-slate-900 li:hover {
+  background-color: #f8fafc !important;
+  /* slate-50 */
+  transform: translateX(2px);
+}
+
+/* Product/Order cards - Better shadows */
+html:not(.dark) #admin-layout .bg-slate-900 {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Buttons - Enhanced states */
+html:not(.dark) #admin-layout button,
+html:not(.dark) #admin-layout a[class*="bg-emerald"] {
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+html:not(.dark) #admin-layout button:hover,
+html:not(.dark) #admin-layout a[class*="bg-emerald"]:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-1px);
+}
+
+html:not(.dark) #admin-layout button:active,
+html:not(.dark) #admin-layout a[class*="bg-emerald"]:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Quick Action Cards - Enhanced hover */
+html:not(.dark) #admin-layout a[class*="from-purple"]:hover,
+html:not(.dark) #admin-layout a[class*="from-blue"]:hover,
+html:not(.dark) #admin-layout a[class*="from-cyan"]:hover,
+html:not(.dark) #admin-layout a[class*="from-pink"]:hover {
+  box-shadow: 0 4px 8px rgba(124, 58, 237, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+/* Status badges - Subtle shadows */
+html:not(.dark) #admin-layout .bg-yellow-900,
+html:not(.dark) #admin-layout .bg-emerald-900,
+html:not(.dark) #admin-layout .bg-red-900,
+html:not(.dark) #admin-layout .bg-blue-900 {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Image containers - Better borders */
+html:not(.dark) #admin-layout img {
+  border-color: #e2e8f0 !important;
+}
+
+/* Dashboard header gradient text - ensure visibility */
+html:not(.dark) #admin-layout .text-gradient-animated {
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6, #06b6d4, #3b82f6, #8b5cf6) !important;
+  background-size: 200% auto !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: gradient 3s ease infinite !important;
+}
+
+/* Low Stock Alert - Enhanced visibility */
+html:not(.dark) #admin-layout .bg-red-500\/10 {
+  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.1), 0 1px 2px rgba(239, 68, 68, 0.05) !important;
+}
+
+/* Sign Out button - Distinct hover */
+html:not(.dark) #admin-layout>div:first-child>div:last-child button:hover {
+  background-color: #fee2e2 !important;
+  /* red-100 */
+  color: #dc2626 !important;
+  /* red-600 */
+}
+
+/* Improve overall text hierarchy */
+html:not(.dark) #admin-layout h1 {
+  color: #0f172a !important;
+  /* slate-900 */
+  font-weight: 800 !important;
+}
+
+html:not(.dark) #admin-layout h2 {
+  color: #1e293b !important;
+  /* slate-800 */
+  font-weight: 700 !important;
+}
+
+html:not(.dark) #admin-layout h3 {
+  color: #334155 !important;
+  /* slate-700 */
+  font-weight: 600 !important;
+}
+
+/* Ensure all interactive elements have pointer cursor */
+html:not(.dark) #admin-layout button,
+html:not(.dark) #admin-layout a,
+html:not(.dark) #admin-layout select {
+  cursor: pointer !important;
+}
+
+/* Add subtle background to main content area */
+html:not(.dark) #admin-layout main {
+  background: linear-gradient(to bottom, #ffffff, #f8fafc) !important;
+}
+
+/* ========== USER DROPDOWN MENU LIGHT MODE ========== */
+
+/* User menu dropdown container */
+html:not(.dark) .user-menu-container .glass-card {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* User info section in dropdown */
+html:not(.dark) .user-menu-container .glass-card>div:first-child {
+  border-bottom-color: #e2e8f0 !important;
+  background-color: #f8fafc !important;
+}
+
+html:not(.dark) .user-menu-container .text-white {
+  color: #0f172a !important;
+  /* slate-900 */
+}
+
+html:not(.dark) .user-menu-container .text-slate-400 {
+  color: #64748b !important;
+  /* slate-500 */
+}
+
+html:not(.dark) .user-menu-container .text-slate-300 {
+  color: #475569 !important;
+  /* slate-600 */
+}
+
+/* Menu items hover states */
+html:not(.dark) .user-menu-container a:hover,
+html:not(.dark) .user-menu-container button:hover {
+  background-color: #f1f5f9 !important;
+  /* slate-100 */
+  color: #7c3aed !important;
+  /* purple-600 */
+}
+
+/* Admin link - special highlight */
+html:not(.dark) .user-menu-container a[href*="admin"]:hover {
+  background-color: #ede9fe !important;
+  /* purple-100 */
+  color: #7c3aed !important;
+  /* purple-600 */
+}
+
+/* Sign out button - red hover */
+html:not(.dark) .user-menu-container button[type="button"]:hover {
+  background-color: #fee2e2 !important;
+  /* red-100 */
+  color: #dc2626 !important;
+  /* red-600 */
+}
+
+/* Border between sections */
+html:not(.dark) .user-menu-container .border-white\/10 {
+  border-color: #e2e8f0 !important;
+  /* slate-200 */
+}
+
+/* Gradient Buttons - Force white text in light mode */
+html:not(.dark) #admin-layout button.bg-gradient-to-r,
+html:not(.dark) #admin-layout a.bg-gradient-to-r,
+html:not(.dark) #admin-layout a.bg-emerald-600,
+html:not(.dark) #admin-layout button.bg-emerald-600 {
+  color: #ffffff !important;
+}
+
+/* Enhance gradient button visibility in light mode */
+html:not(.dark) #admin-layout a.bg-gradient-to-r,
+html:not(.dark) #admin-layout button.bg-gradient-to-r {
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25), 0 2px 6px rgba(59, 130, 246, 0.15) !important;
+}
+
+html:not(.dark) #admin-layout a.bg-gradient-to-r:hover,
+html:not(.dark) #admin-layout button.bg-gradient-to-r:hover {
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35), 0 3px 8px rgba(59, 130, 246, 0.2) !important;
+  transform: translateY(-1px);
+}
+
+/* CRITICAL: Preserve BUTTON gradients (bg-gradient-to-r) only - NOT cards (bg-gradient-to-br) */
+html:not(.dark) #admin-layout a.bg-gradient-to-r[class*="from-purple"],
+html:not(.dark) #admin-layout button.bg-gradient-to-r[class*="from-purple"] {
+  background: linear-gradient(to right, #9333ea, #2563eb) !important;
+}
